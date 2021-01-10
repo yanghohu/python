@@ -24,50 +24,50 @@ osname = platform.platform()
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 
-# ###############################################################################
-# # filefind : 파일 확장자 ,파일 사이즈 찾기 
-# ################################################################################
-# def filefind(dest):
-#     for root, dirs, files in os.walk(dest):
-#         for filename in files:
-#             try:
-#                 relativepath = os.path.join(root,filename) # 상대경로
-#                 abspath = os.path.abspath(relativepath) # 절대경로
-#                 name, ext = os.path.splitext(filename) #  파일명과 확장자 분리
-#                 if(ext[0:1] == '.'):
-#                     ext_sp = ext[1:len(ext)]
-#                 else:
-#                     ext_sp = ext
+###############################################################################
+# filefind : 파일 확장자 ,파일 사이즈 찾기 
+################################################################################
+def filefind(dest):
+    for root, dirs, files in os.walk(dest):
+        for filename in files:
+            try:
+                relativepath = os.path.join(root,filename) # 상대경로
+                abspath = os.path.abspath(relativepath) # 절대경로
+                name, ext = os.path.splitext(filename) #  파일명과 확장자 분리
+                if(ext[0:1] == '.'):
+                    ext_sp = ext[1:len(ext)]
+                else:
+                    ext_sp = ext
                     
-#                 file_size_byte = os.stat(relativepath).st_size
-#                 createday = datetime.datetime.fromtimestamp(os.path.getctime(relativepath)).strftime('%Y%m%d') #파일입력일
-#                 modifyday = datetime.datetime.fromtimestamp(os.path.getmtime(relativepath)).strftime('%Y%m%d') #파일수정일
-#                 f.write(hostname +"@@")
-#                 f.write(ip + "@@")
-#                 f.write(osname+"@@")
-#                 f.write(abspath + "@@")
-#                 f.write(filename + "@@")
-#                 f.write(str(file_size_byte)+"@@")
-#                 f.write(ext_sp+"@@")
-#                 f.write(modifyday +"@@")
-#                 f.write(createday +"@@")
-#                 f.write("\n")
-#             except Exception as ex:
-#                 continue
+                file_size_byte = os.stat(relativepath).st_size
+                createday = datetime.datetime.fromtimestamp(os.path.getctime(relativepath)).strftime('%Y%m%d') #파일입력일
+                modifyday = datetime.datetime.fromtimestamp(os.path.getmtime(relativepath)).strftime('%Y%m%d') #파일수정일
+                f.write(hostname +"@@")
+                f.write(ip + "@@")
+                f.write(osname+"@@")
+                f.write(abspath + "@@")
+                f.write(filename + "@@")
+                f.write(str(file_size_byte)+"@@")
+                f.write(ext_sp+"@@")
+                f.write(modifyday +"@@")
+                f.write(createday +"@@")
+                f.write("\n")
+            except Exception as ex:
+                continue
 
 
-# ###############################################################################
-# #           : 드라이브 별로 찾기 (filefind 호출 )
-# ###############################################################################
-# for dr in drives:
-#     dr = dr.replace(":\\","") 
-#     print(ip + "_" + dr) 
-#     print(ip + "_" + dr + " start job ")
-#     print("python driver_file.py " + dr + ": " + dr)
-#     f = open(ip + "_" + dr + ".txt", 'w+',-1,"utf-8") #windows    
-#     filefind(dr + ":\\")
-#     f.close()
-#     print(ip + "_" + dr + " end job ") 
+###############################################################################
+#           : 드라이브 별로 찾기 (filefind 호출 )
+###############################################################################
+for dr in drives:
+    dr = dr.replace(":\\","") 
+    print(ip + "_" + dr) 
+    print(ip + "_" + dr + " start job ")
+    print("python driver_file.py " + dr + ": " + dr)
+    f = open(ip + "_" + dr + ".txt", 'w+',-1,"utf-8") #windows    
+    filefind(dr + ":\\")
+    f.close()
+    print(ip + "_" + dr + " end job ") 
  
 
 
@@ -97,3 +97,5 @@ for dr in drives:
 print(data_concat.head(1)) 
 print(data_concat.shape)   
  
+
+ 456
