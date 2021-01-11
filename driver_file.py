@@ -100,7 +100,7 @@ ext_sp = (data_concat["ext_sp"] == "mp4") | (data_concat["ext_sp"] == "avi")
  
 data_concat_filter = data_concat[ext_sp]
 
-print(data_concat_filter[data_concat_filter.filename.duplicated()].sort_values(['filename','createday'],ascending=[True,False]))
+# print(data_concat_filter[data_concat_filter.filename.duplicated()].sort_values(['filename','createday'],ascending=[True,False]))
 
 data_sort_concat_filter = data_concat_filter[data_concat_filter.filename.duplicated()].sort_values(['filename','createday'],ascending=[True,False])
 
