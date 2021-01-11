@@ -8,10 +8,10 @@ import datetime,time
 import pandas as pd
 import glob
 
-# ###############################################################################
-# # python install pywin32
-# # pip install pywin32
-# ###############################################################################
+###############################################################################
+# python install pywin32
+# pip install pywin32
+###############################################################################
 
 ###############################################################################
 # drives : 하드드라이브 본인에 맞는 드라이브 나옴
@@ -24,9 +24,9 @@ osname = platform.platform()
 hostname = socket.gethostname()
 ip = socket.gethostbyname(hostname)
 
-###############################################################################
-# filefind : 파일 확장자 ,파일 사이즈 찾기 
-################################################################################
+# ###############################################################################
+# # filefind : 파일 확장자 ,파일 사이즈 찾기 
+# ################################################################################
 def filefind(dest):
     for root, dirs, files in os.walk(dest):
         for filename in files:
@@ -95,5 +95,13 @@ for dr in drives:
 #         : 중복파일 찾기 및 저장 (구현 아직 안 되었음) 판다스 구현
 ###############################################################################
 print(data_concat.head(1)) 
-print(data_concat.shape)   
+print(data_concat.shape)  
+ext_sp = (data_concat["ext_sp"] == "mp4") | (data_concat["ext_sp"] == "avi")
  
+data_concat_filter = data_concat[ext_sp]
+
+print(data_concat_filter[data_concat_filter.filename.duplicated()].sort_values(['filename','createday'],ascending=[True,False]))
+
+data_sort_concat_filter = data_concat_filter[data_concat_filter.filename.duplicated()].sort_values(['filename','createday'],ascending=[True,False])
+
+data_sort_concat_filter.to_csv("중복파일.txt",sep="^",index=False,na_rep='NaN')
