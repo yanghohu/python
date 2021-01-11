@@ -105,3 +105,5 @@ data_concat_filter = data_concat[ext_sp]
 data_sort_concat_filter = data_concat_filter[data_concat_filter.filename.duplicated()].sort_values(['filename','createday'],ascending=[True,False])
 
 data_sort_concat_filter.to_csv("중복파일.txt",sep="^",index=False,na_rep='NaN')
+
+###
