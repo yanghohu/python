@@ -42,15 +42,15 @@ def filefind(dest):
                 file_size_byte = os.stat(relativepath).st_size
                 createday = datetime.datetime.fromtimestamp(os.path.getctime(relativepath)).strftime('%Y%m%d') #파일입력일
                 modifyday = datetime.datetime.fromtimestamp(os.path.getmtime(relativepath)).strftime('%Y%m%d') #파일수정일
-                f.write(hostname +"@@")
-                f.write(ip + "@@")
-                f.write(osname+"@@")
-                f.write(abspath + "@@")
-                f.write(filename + "@@")
-                f.write(str(file_size_byte)+"@@")
-                f.write(ext_sp+"@@")
-                f.write(modifyday +"@@")
-                f.write(createday +"@@")
+                f.write(hostname +"^")
+                f.write(ip + "^")
+                f.write(osname+"^")
+                f.write(abspath + "^")
+                f.write(filename + "^")
+                f.write(str(file_size_byte)+"^")
+                f.write(ext_sp+"^")
+                f.write(modifyday +"^")
+                f.write(createday +"^")
                 f.write("\n")
             except Exception as ex:
                 continue
@@ -87,7 +87,7 @@ for dr in drives:
     dr = dr.replace(":\\","") 
     print (ip + "_" + dr + ".txt")
     for f in glob.glob(ip + "_" + dr + ".txt"):
-        df = pd.read_csv(f,delimiter="@@",index_col=None, header=0, encoding='UTF8',error_bad_lines=False,names=cols)         
+        df = pd.read_csv(f,delimiter="^",index_col=None, header=0, encoding='UTF8',error_bad_lines=False,names=cols)         
         data_concat1 = pd.concat([df], ignore_index=True,names=cols)
         data_concat = data_concat.append(data_concat1,ignore_index=True) 
 
