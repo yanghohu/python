@@ -1,0 +1,6 @@
+git init  -- 저장소 초기화 하기
+
+-- 전역사용자 등록
+git config --global user.name "yanghohu"
+git config --global user.email yanghohu@gmail.com
+
