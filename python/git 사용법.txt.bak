@@ -24,3 +24,4 @@ git clone https://github.com/yanghohu/python/tree/main . # .은 현재폴더에 
 
 -- 변경사항 내 컴퓨터로 가져오기 git pull
 git pull origin master
+
