@@ -28,4 +28,6 @@ git pull origin master
 -- Gui로 하기
 커밋, push
 
--- 만든 branch로 이동하기(git checkout)
+-- 만든 branch로 이동하기(git checkout
+
+-- 병합하기	
